@@ -19,4 +19,4 @@ A good commit message is very specific on what changes were made such as "Added 
 
 A merge conflict is when the merge can fail.
 It can fail either from starting the merge or failing during the merge.
-It might fail if changes are in conflict with someone else's committed changes.
+It could fail if changes are in conflict with someone else's committed changes.
