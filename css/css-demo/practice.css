@@ -1,0 +1,35 @@
+ section#contact-info {
+ 	font-size:.8em;
+ }
+
+a:link {
+	color: #FF0000;
+}
+
+ .job {
+ 	background-color: #e9e5dc;
+ 	border-radius: 25px;
+ 	padding: 15px; 
+    width: 450px;
+    height: 150px;
+    margin-bottom: 10px;
+    border-top-width:2px;
+ }
+
+ .font {
+ 	font-size: .8em;
+ }
+
+ ul > li {
+ 	background-color: yellow;
+ }
+
+ section > section {
+ 	background-color: tan;
+ }
+
+
+ /* Cascading is where there is one or more CSS style pages that overlay the html. */
+ /* A pseudo-class is used to define a specific state of an element example: mouse over element changes colors. 
+ Links changes to purple from blue.*/
+ /* Added a:link as a pseudo-class example */
