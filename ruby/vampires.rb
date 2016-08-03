@@ -81,7 +81,11 @@ until allergies == "done" || allergies == "sunshine"
 end
 
 # Checks our results and gives our results IF allergies was not declared as sunshine ( So that results wont overlap)
-if age == true && (garlic == true || insurance == true) && allergies != "sunshine"
+
+if name == "Drake Cula" || name == "Tu Fang" && allergies != "sunshine"
+	p dvampire
+	
+elsif age == true && (garlic == true || insurance == true) && allergies != "sunshine"
 	p nvampire
 
 elsif age == false && (garlic == false || insurance == false) && allergies != "sunshine"
@@ -89,9 +93,6 @@ elsif age == false && (garlic == false || insurance == false) && allergies != "s
 
 elsif age == false && (garlic == false && insurance == false) && allergies != "sunshine"
 	p cvampire
-
-elsif name == "Drake Cula" || name == "Tu Fang" && allergies != "sunshine"
-	p dvampire
 
 elsif allergies != "sunshine"
 	p "Results inconclusive"
