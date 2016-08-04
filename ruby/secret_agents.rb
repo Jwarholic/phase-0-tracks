@@ -52,19 +52,31 @@ end
 return string
 end
 
-p encrypt("abc") 
-p encrypt("zed") 
-p decrypt("bcd") 
-p decrypt("afe") 
-p decrypt(encrypt("swordfish"))
+puts "Would you like to encrypt or decrypt your secret password?"
+input = gets.chomp
 
+puts "What is your password?"
+password = gets.chomp
+
+if input == "encrypt"
+	password = encrypt(password)
+	p password
+elsif input == "decrypt"
+	password = decrypt(password)
+	p password
+else
+	p "please try again"
+end
 
 # Decrypting swordfish all 1 character backwards
 # encrypt brings it all 1 character forward , canceling each other out
 
 
 
-
+#      - Ask user to encrypt or decrypt
+#         - gets password ( string )
+#         - Based on user input encrypt or decrypt
+#         - Prints results to screen
 
 
 
