@@ -1,3 +1,5 @@
+# paired with katherine guenther
+
 def adds_to_array(para, item)
 	para << item
 end
