@@ -30,8 +30,7 @@
  #release 0 make the method
 def swap(string)
 	swapper = string.split
-	string = swapper.join(" ")
-	string.reverse!
+	string = swapper.reverse.join(" ")
 	string.downcase!
 	vowels = "aeioua"
 	con = "bcdfghjklmnpqrstvwxyzb"
