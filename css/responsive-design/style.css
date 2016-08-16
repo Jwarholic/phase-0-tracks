@@ -9,9 +9,19 @@ cite {
   margin-top: 10px;
 }
 
-#external-links ul {
+main {
+  display: inline-block;
+  width: 70%;
+}
+body {
+  max-width: 960px;
+}
+
+#external-links  {
   list-style-type: none;
-  padding-left: 0px;
+  display: inline-block;
+  min-width: 15%;
+  vertical-align: top;
 }
 
 /* you're welcome to edit the
@@ -29,4 +39,16 @@ figure {
 figcaption {
   font-style: italic;
   text-align: right;
+}
+
+@media screen and (max-width:400px) {
+  main,body {
+    text-align: center;
+    }
+}
+
+@media screen and (max-width:600px) {
+  h1 {
+    font-size: 15px;
+  }
 }

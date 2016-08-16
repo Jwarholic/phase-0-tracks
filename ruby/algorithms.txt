@@ -1,0 +1,27 @@
+ Elevator Algorithym 
+
+ - Wait for a user to enter the elevator
+ 		- For each user in the elevator ask which floor number to go to.
+ 			- Press the button corresponding to users floor request.
+ 		- Once doors open and users exit
+ 			- Say have a great day! thanks for using the elevator!
+ 		- If no more users go into sleep mode until new user enters elevator
+ 		- repeat all previous steps
+
+
+Bowl of cereal algorithym
+
+	- Get bowl of cereal from cabinet and place on counter
+		-Pour cereal into bowl until the bowl is 3/4 full
+		-close up cereal box and put away
+	- get carton of milk from counter and place on counter
+		- take top of milk
+		-Pour 1 cup of milk into bowl
+		- close up milk and put back into fridge
+	- Grab spoon from drawer and stick in bowl
+		- close drawer
+	- Place bowl on kitchen table
+		- Shout out breakfast is ready!
+
+ 		
+

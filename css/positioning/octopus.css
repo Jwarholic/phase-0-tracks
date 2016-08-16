@@ -1,0 +1,31 @@
+#octopus {
+	display:block;
+	margin: 0 auto;
+	margin-top: 75px;
+}
+
+#glasses {
+	display: block;
+	margin: 0 auto;
+	margin-top: -190px;
+}
+
+#hat {
+	display: block;
+	margin: 0 auto;
+	margin-top: -220px;
+}
+
+/* I originally used position:absolute
+	To position with top/left using pixels.
+	Used margin: 0 auto to keep octopus Centered while resizing the page
+	Wasn't sure if the assignment wanted this instead
+	example
+#octopus: {
+	position:absolute;
+	top: howevermany px;
+	left: howevermany px;	
+	*/
+
+
+	/* However, I like how this keeps thing centered while readjusting/resizing the page */
