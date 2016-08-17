@@ -1,3 +1,27 @@
+#What did you learn about pseudocode from working on this challenge?
+
+# I learned that pseudocode should be a general sketch of the program. 
+# It gives a good foundation for when the program is being built.
+
+#What are the tradeoffs of using arrays and hashes for this challenge?
+
+# Using a hash felt better to use for this assignment because we could store
+# keys and values( items and quantities) arrays and hashes have different methods 
+# to call upon
+
+#What does a method return?
+# A method returns the last line of the method by default.. or if we call return on it
+
+#What kind of things can you pass into methods as arguments?
+# Variables can be passed into methods as arguments 
+
+#How can you pass information between methods?
+#using a global variable as the parameter 
+#being able to call a different method within a method.
+
+
+
+
 # Method to create a list
 # input: string of items separated by spaces (example: "carrots apples cereal pizza")
 # steps: 
@@ -34,7 +58,7 @@ def create_list(string)
   grocery_list = {}
   item_list = string.split(" ")
   item_list.each do |item| 
-    grocery_list [item] = 1
+    grocery_list[item] = 1
   end 
    p grocery_list
 end
