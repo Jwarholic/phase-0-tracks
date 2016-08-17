@@ -37,13 +37,11 @@ example_genders = ["agender", "female", "bigender", "male", "female", "gender fl
 
 example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
 
-
 #example_genders.length.times do |i|
 #santas << Santa.new(example_genders[i], example_ethnicities[i])
  # puts "-------------------- New Santa --------------------"
  # puts "gender: #{example_genders[i]} , ethnicity:#{example_ethnicities[i]}"
 #end
-
 
 #new_santa = Santa.new("male", "white")
 #puts "#{new_santa.gender}"
@@ -54,28 +52,16 @@ example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer n
 #puts "#{new_santa.age} #{new_santa.ethnicity}"
 
 #Release 4 make a ton of santas
+# .sample to give random Array
+# rand to randomly generate a number 
 
-
- 
-
+count = 0
+until count == 15
 santa =  Santa.new(example_genders.sample, example_ethnicities.sample)
 santa.age = rand(141)
-puts "--------------------- Santa Details -------------"
+puts "---------------Santa Details: ----------------------"
 puts " age:#{santa.age}
  gender:#{santa.gender}
  ethnicity:#{santa.ethnicity}"
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+count += 1
+end

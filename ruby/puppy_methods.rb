@@ -10,7 +10,7 @@ class Puppy
   end
 
  def speak(n)
- (0..n).each {puts "Woof!"}
+ (1..n).each {puts "Woof!"}
  end
 
  def roll_over
