@@ -30,6 +30,9 @@
 
 class Gym
 
+attr_reader :gym_location, :gym_ranks, :gym_type
+attr_accessor :gym_location, :gym_ranks, :gym_type
+
 	def initialize(name, location)
     @gym_name = name
     @gym_location = location
@@ -61,3 +64,9 @@ class Gym
 		end
 	end
 end
+
+space = Gym.new("poops land", "idaho")
+space.high_five(4)
+space.get_protein(500)
+space.bad_gym("Pokemon Gym")
+puts "#{space.gym_ranks}"
