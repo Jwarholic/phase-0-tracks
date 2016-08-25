@@ -16,4 +16,6 @@ for (var i = string.length-1; i >=0; i--) {
 
 
 // Driver Code
+// step4 Add driver code that calls the function in order to reverse a string of your choice (as long as it's not a palindrome!), and stores the result of the function in a variable.
 reverse("hello")
+console.log(reverse("hello"));
