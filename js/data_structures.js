@@ -32,5 +32,28 @@ console.log(horse_names);
  }
 console.log(horses);
 
+// Release 2
+// write a construction function for a car
+//   - give it a few properties of varius data types
+//      - create at least 1 function 
+//      - Create a few cars to show that it works
 
+function Car(color, year, good_condition) {
+  // console.log("Our new car:", this);
+  this.color = color;
+  this.year = year;
+  this.good_condition = good_condition;
+  console.log("Car INITIALIZATION COMPLETE")
+  this.drives_fast = function() {console.log ("This " +  this.color + " color car drives fast"); }; 
+  console.log( "Our " + this.color + this.year);
+}
 
+ var anotherCar = new Car("blue", 1808, false);
+ console.log(anotherCar);
+anotherCar.drives_fast();
+console.log("----");
+  
+ var anotherCar2 = new Car("golden", 2016, true);
+console.log(anotherCar2);
+anotherCar2.drives_fast();
+console.log("----");
