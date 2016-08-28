@@ -9,9 +9,6 @@
  // 			-  If the length is the same also add it in the longest word 
  // 	- Print out the final version of word to see the longest word or words
 
-var array = ["googles", "google",  "hoobear"];
-//console.log(array)
-
 function longestfinder(array) {
 	var longest = 0;
 	var word = '';
@@ -26,7 +23,11 @@ function longestfinder(array) {
 console.log('The longest words in the array are:'  + ' ' + word)
 }
 
+
+var array = ["googles", "google",  "hoobear"];
 longestfinder(array);
-
-
+var array2 = ["googles", "google",  "hoobear" , "really long word"];
+longestfinder(array2);
+var array3 = ["a", "bb", "ccc" , "dddd"];
+longestfinder(array3);
 
