@@ -20,7 +20,7 @@ function longestfinder(array) {
 		var word = word+ ' ' + array[i];
 	}
 }
-console.log('The longest words in the array are:'  + ' ' + word)
+return console.log('The longest words in the array are:'  + ' ' + word)
 }
 
 
@@ -31,3 +31,36 @@ longestfinder(array2);
 var array3 = ["a", "bb", "ccc" , "dddd"];
 longestfinder(array3);
 
+// Release 1: Find a Key-Value Match
+// input: two objects
+// ouput: true if any matches / false if no matches
+
+// Define a function that takes two objects
+//   -Loop through one of the objects
+//       - For each key/value pair in the object
+//       - Compare if any of these match to the other object
+//          -If a match is found
+//            - Return true
+//           - If no match found
+//              -Return false
+
+
+var list1 = {name: "Jason", age: 351, height: 57, weight: 180};
+var list2 = {name: "Lisa", age: 35, height: 57, weight: 140};
+function compare(para1, para2){
+	var match = false;
+	
+	for(var i in list1) {
+	 	 for(var j in list2) 
+	 		 if (list1[i]==list2[j]) {
+	 	 	console.log("A matching value in the list was" +' ' +list2[j]);
+	 	 	var match = true;
+	 	 }
+	 }
+	 if  (match === false) {
+	 	console.log("No Matches Found");
+	 	return false;
+	 }
+}
+
+compare(list1, list2);
