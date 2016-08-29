@@ -24,12 +24,12 @@ return console.log('The longest words in the array are:'  + ' ' + word)
 }
 
 
-var array = ["googles", "google",  "hoobear"];
-longestfinder(array);
-var array2 = ["googles", "google",  "hoobear" , "really long word"];
-longestfinder(array2);
-var array3 = ["a", "bb", "ccc" , "dddd"];
-longestfinder(array3);
+// var array = ["googles", "google",  "hoobear"];
+// longestfinder(array);
+// var array2 = ["googles", "google",  "hoobear" , "really long word"];
+// longestfinder(array2);
+// var array3 = ["a", "bb", "ccc" , "dddd"];
+// longestfinder(array3);
 
 // Release 1: Find a Key-Value Match
 // input: two objects
@@ -63,7 +63,7 @@ function compare(para1, para2){
 	 }
 }
 
-compare(list1, list2);
+// compare(list1, list2);
 
 
 // Release 2: Generate Random Test Data
@@ -73,3 +73,43 @@ compare(list1, list2);
 //        -output 3 random words back
 //        -word should be mininum of 1 letter
 //            -max of 10 letters
+
+
+
+//  Define a random function that takes an integer as a parameter
+   // - Create an empty array to store the final words
+        // - create the alphabet to choose a random letter
+        // 	-set a for loop while the count nis less than the number parameter
+        // 	-set an empty word to store the word 
+        // 	    -make a randlen count to choose a random number 1-10
+        // 	    - make a loop to create a word until the length matches the randlen
+        // 	    - push the word into the array 
+        // - return the final array
+
+function random(n) {
+	var arr = [];
+	var chars ="abcdefghijklmnopqrstuvwxyz";
+	for (var i = 0; i < n; i++) {
+		var word = "";
+		var randlen = Math.floor(Math.random() * (10 - 1) +1);
+		for (var index = 0; index < randlen; index++) {
+			word += chars.charAt(Math.random().toString()* chars.length);
+		}
+		arr.push(word);
+	}
+	return arr;
+}
+
+//random(5)
+
+
+// Add driver code that does the following 10 times: generates an array, 
+//prints the array, feeds the array to your "longest word" function, and prints the result.
+
+for (var i = 0; i < 10; i++) {
+	arr = random(5)
+	console.log(arr)
+	longest = longestfinder(arr)
+	console.log(longest)
+}
+
