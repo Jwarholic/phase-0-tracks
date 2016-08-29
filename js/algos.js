@@ -64,3 +64,12 @@ function compare(para1, para2){
 }
 
 compare(list1, list2);
+
+
+// Release 2: Generate Random Test Data
+// Write a function that takes an integer for length
+//   -build an array of strings with the given length
+//       -input random(3)
+//        -output 3 random words back
+//        -word should be mininum of 1 letter
+//            -max of 10 letters
