@@ -1,0 +1,63 @@
+Release 2
+
+Exequte SQL Queries
+
+Question1. Display the information in one table (either table is fine).
+
+Input:
+sqlite> SELECT * FROM gyms;
+
+Output:
+1|Golds Gym
+2|24 Hours
+3|Planet Fitness
+4|Fitness 19
+sqlite>
+
+
+Question2. Update an item that meets some condition (you can choose a condition that makes sense).
+
+UPDATE members SET trainer = "true" WHERE name ="Jason Warholic";
+
+
+Question3. Display the information in both tables using one query.
+
+
+Input:
+SELECT * FROM members, Gyms  WHERE members.gym_id = Gyms.id;
+
+Output:
+1|Jason Warholic|27|true|2|2|24 Hours
+2|Master Trainer|35|true|1|1|Golds Gym
+3|Old Joe|80|false|3|3|Planet Fitness
+4|Mr.Olympia|25|true|4|4|Fitness 19
+
+
+Question4.
+Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+Input:
+SELECT members.name, members.age, members.trainer, Gyms.name FROM members JOIN Gyms ON members.gym_id = Gyms.id;
+
+Output:
+Jason Warholic|27|true|24 Hours
+Master Trainer|35|true|Golds Gym
+Old Joe|80|false|Planet Fitness
+Mr.Olympia|25|true|Fitness 19
+
+Question5.
+Delete an item that meets some condition (you can choose a condition that makes sense).
+
+Input:
+DELETE FROM members WHERE age = 80;
+
+Output:
+SELECT * FROM members;
+
+1|Jason Warholic|27|true|2
+2|Master Trainer|35|true|1
+4|Mr.Olympia|25|true|4
+
+
+
+
