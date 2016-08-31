@@ -1,0 +1,20 @@
+Release 2
+
+question 2:
+
+to join three tables
+
+I used
+ SELECT * FROM reviews JOIN Businesses ON business_id = businesses.id JOIN Users ON user_id = users.id
+
+
+
+Question 3 Select certain conditions
+
+SELECT users.first_name, users.last_name, businesses.name, reviews.stars,reviews.comment  FROM reviews JOIN users ON users.id = reviews.user_id JOIN businesses ON businesses.id = reviews.business_id;
+
+
+Question 4 Select all the data for one particular Business.
+
+SELECT * FROM reviews JOIN users ON users.id = reviews.user_id JOIN businesses ON businesses.id = reviews.business_id WHERE businesses.name = "Grundy Hollow Wedding Chapel";
+1|5|Did a great show|1|1|1|Bradford|Pitt|1|Grundy Hollow Wedding Chapel
