@@ -58,6 +58,44 @@ SELECT * FROM members;
 2|Master Trainer|35|true|1
 4|Mr.Olympia|25|true|4
 
+Release 3 Research on your own:
+There are lots of different kinds of joins. What are they? Can you apply different conditions to a join to change what's displayed? Can you bookmark any good diagrams that will help you tell different joins apart in the future?
+
+
+The CrossJoin:
+Input: SELECT members.name,members.age, members.trainer FROM members CROSS JOIN gyms;
+Output: 
+Jason Warholic|27|true
+Jason Warholic|27|true
+Jason Warholic|27|true
+Jason Warholic|27|true
+Master Trainer|35|true
+Master Trainer|35|true
+Master Trainer|35|true
+Master Trainer|35|true
+Mr.Olympia|25|true
+Mr.Olympia|25|true
+Mr.Olympia|25|true
+Mr.Olympia|25|true
+
+Printed out each name for each gym of the second table.
+
+Found http://www.tutorialspoint.com/sqlite/sqlite_using_joins.htm that shows different joins.
+
+The Outerjoin:
+SELECT members.name, members.age, members.trainer , gyms.name  FROM members LEFT OUTER JOIN gyms ON members.gym_id = gyms.id;
+Jason Warholic|27|true|24 Hours
+Master Trainer|35|true|Golds Gym
+Mr.Olympia|25|true|Fitness 19
+Outter join is a extension of the inner join.
+
+The Innerjoin: Which INNER is optional is the default join.
+
+SELECT * FROM members JOIN gyms ON  members.gym_id = gyms.id;
+1|Jason Warholic|27|true|2|2|24 Hours
+2|Master Trainer|35|true|1|1|Golds Gym
+4|Mr.Olympia|25|true|4|4|Fitness 19
+
 
 
 
