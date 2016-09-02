@@ -4,21 +4,14 @@
 # Input
 # Create a random workout generator that lets user pick from a database of workouts
 #Require gems
+#Output
+# random workout
 
 require 'sqlite3'
 
 #Create our database file
 db = SQLite3::Database.new("workouts.db")
 db.results_as_hash = true
-
-# Create tables into our database....
-#       - Arms
-#       - Legs
-#       - Chest
-#       -back
-#       - Shoulders
-#       - Abs
-#       - Full_body
 
 # Create a method to create our tables
 # Use a unique constraint to prevent duplicate workout names
@@ -33,7 +26,8 @@ def table_creator(name)
   SQL
 end
 
-#Execute our tables
+# Create tables into database....
+#  - Arms / legs/ chest / back / shoulders
 
 db.execute(table_creator("arms"))
 db.execute(table_creator("legs"))
@@ -85,24 +79,8 @@ db.execute("INSERT OR IGNORE INTO shoulders (name, description) VALUES
 	('Shoulders Gone Wild' , 'five sets shoulder press, three sets fronts and sides')")
 
 # Create a method that will allow user to add workouts to each group if that name does not exist
-def add_arms(db, name, description)
-	db.execute("INSERT OR IGNORE INTO arms (name, description) VALUES (?, ?)", [name, description])
-end
-
-def add_legs(db, name, description)
-	db.execute("INSERT OR IGNORE INTO legs (name, description) VALUES (?, ?)", [name, description])
-end
-
-def add_chest(db, name, description)
-	db.execute("INSERT OR IGNORE INTO chest (name, description) VALUES (?, ?)", [name, description])
-end
-
-def add_back(db, name, description)
-	db.execute("INSERT OR IGNORE INTO back (name, description) VALUES (?, ?)", [name, description])
-end
-
-def add_shoulders(db, name, description)
-	db.execute("INSERT OR IGNORE INTO shoulders (name, description) VALUES (?, ?)", [name, description])
+def add(db, name, description, group)
+	db.execute("INSERT OR IGNORE INTO #{group} (name, description) VALUES (?, ?)", [name, description])
 end
 
 # USER INTERFACE
@@ -112,87 +90,44 @@ end
 # User receives a random workout printed to them
 # User chooses if they want a new workout generated or quit the program
 
+ puts "What would you like to do?"
+ puts "-- Type 'add' to add a workout."
+ puts "-- Type 'delete' to delete a workout"
+ puts "-- Type 'update' to update a workout."
+ puts "-- Type 'workout' to generate a random workout."
+ first_response = gets.chomp.downcase 
 
-puts "Please type 'workout' to generate a workout or type 'add' to add new workout"
-response = gets.chomp.downcase
-
-if response == 'add'
-puts "choose a database to add to (arms, legs, chest, shoulders, back)"
-add = gets.chomp.downcase
-case add 
-when 'arms'
+ #Set up a case statement for each response from the user
+ case first_response
+ 	when 'add'
+	puts "choose a database to add to (arms, legs, chest, shoulders, back)"
+	add = gets.chomp.downcase
+	if add == 'arms' || workout == 'legs' || workout == 'chest' || workout == 'back' || workout == 'shoulders'
 	puts "Type a name for the workout"
-	arms_name = gets.chomp
+	name = gets.chomp
 	puts "Type the description for the workout"
-	arms_desc = gets.chomp
-	add_arms(db, arms_name, arms_desc)
+	description = gets.chomp 
+	add(db, name, description, add)
+	end
 end
-end
-
+	
+#Ask user what workout to fetch from and converts it to an array
 puts "What muscle group are you working out today? (arms, legs, chest, back, shoulders)?"
 workout = gets.chomp.downcase
 
+#Iterate through the array and generate a random workout based on the input
+if workout == 'arms' || workout == 'legs' || workout == 'chest' || workout == 'back' || workout == 'shoulders'
+	workout = workout.split(' ')
 
-case workout
-# Generating a case statement deciding on what muscle group the user wants to workout
-# Added a random pick from the exisiting table
-when 'arms'
-	arms = db.execute("SELECT arms.name, arms.description FROM arms")
-	randnum = rand(0..arms.length - 1)
-	randompick = arms[randnum]
-	puts "Here is your random workout"
+workout.each do |index|
+	index = db.execute("SELECT #{index}.name, #{index}.description FROM #{index}")
+	randnum = rand(0..index.length - 1)
+	randompick = index[randnum]
+    puts "Here is your random workout"
 	puts "----------------------"
 	puts "Workout Name: #{randompick['name']}"
 	puts "Workout Description: #{randompick['description']}"
-
-when 'legs'
-	legs = db.execute("SELECT legs.name, legs.description FROM legs")
-	randnum = rand(0..legs.length - 1)
-	randompick = legs[randnum]
-	puts "Here is your random workout"
-	puts "----------------------"
-	puts "Workout Name: #{randompick['name']}"
-	puts "Workout Description: #{randompick['description']}"
-
-when 'chest'
-	chest = db.execute("SELECT chest.name, chest.description FROM chest")
-	randnum = rand(0..chest.length - 1)
-	randompick = chest[randnum]
-	puts "Here is your random workout"
-	puts "----------------------"
-	puts "Workout Name: #{randompick['name']}"
-	puts "Workout Description: #{randompick['description']}"
-
-when 'back'
-	arms = db.execute("SELECT back.name, back.description FROM back")
-	randnum = rand(0..back.length - 1)
-	randompick = back[randnum]
-	puts "Here is your random workout"
-	puts "----------------------"
-	puts "Workout Name: #{randompick['name']}"
-	puts "Workout Description: #{randompick['description']}"
-
-when 'shoulders'
-	arms = db.execute("SELECT shoulders.name, shoulders.description FROM shoulders")
-	randnum = rand(0..shoulders.length - 1)
-	randompick = shoulders[randnum]
-	puts "Here is your random workout"
-	puts "----------------------"
-	puts "Workout Name: #{randompick['name']}"
-	puts "Workout Description: #{randompick['description']}"
-
+	end	
 else
-	puts "I didn't understand you sorry please retry the program."
+	puts "I didn't understand you"
 end
-
-
-
-
-
-
-
-
-
-
-
-
