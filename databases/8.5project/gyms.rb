@@ -85,12 +85,27 @@ db.execute("INSERT OR IGNORE INTO shoulders (name, description) VALUES
 db.execute("INSERT OR IGNORE INTO shoulders (name, description) VALUES 
 	('Shoulders Gone Wild' , 'five sets shoulder press, three sets fronts and sides')")
 
-# Create a method that will allow user to add workouts to each group
+# Create a method that will allow user to add workouts to each group if that name does not exist
 def add_arms(db, name, description)
 	db.execute("INSERT OR IGNORE INTO arms (name, description) VALUES (?, ?)", [name, description])
 end
 
-# add_arms(db, "Arm Blaster", "5 sets arm curls, 3 sets trciep extenson") 
+def add_legs(db, name, description)
+	db.execute("INSERT OR IGNORE INTO legs (name, description) VALUES (?, ?)", [name, description])
+end
+
+def add_chest(db, name, description)
+	db.execute("INSERT OR IGNORE INTO chest (name, description) VALUES (?, ?)", [name, description])
+end
+
+def add_back(db, name, description)
+	db.execute("INSERT OR IGNORE INTO back (name, description) VALUES (?, ?)", [name, description])
+end
+
+def add_shoulders(db, name, description)
+	db.execute("INSERT OR IGNORE INTO shoulders (name, description) VALUES (?, ?)", [name, description])
+end
+
 
 # USER INTERFACE
 
