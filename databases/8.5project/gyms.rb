@@ -42,6 +42,7 @@ db.execute(table_creator("back"))
 db.execute(table_creator("shoulders"))
 
 # For each table populate three default workouts.
+# Will not ADD if name exist becuase unique constraint
 
 #Arms
 db.execute("INSERT OR IGNORE INTO arms (name, description) VALUES 
@@ -104,14 +105,6 @@ def add_shoulders(db, name, description)
 	db.execute("INSERT OR IGNORE INTO shoulders (name, description) VALUES (?, ?)", [name, description])
 end
 
-# def print_workout(name, description)
-# 	puts "Here is your generated workout!"
-# 	puts "--------------------"
-# 	puts "Workout Name: #{name}:"
-# 	puts "---------------------"
-# 	puts "Workout Description: #{description}"
-# end
-
 # USER INTERFACE
 
 # User chooses to add or delete workouts from the tables OR chooses to generate a workout
@@ -119,16 +112,34 @@ end
 # User receives a random workout printed to them
 # User chooses if they want a new workout generated or quit the program
 
-puts "What muscle group are you working out today? (arms, legs, chest, back, shoulders)?"
-workout = gets.chomp 
-case workout
 
+puts "Please type 'workout' to generate a workout or type 'add' to add new workout"
+response = gets.chomp.downcase
+
+if response == 'add'
+puts "choose a database to add to (arms, legs, chest, shoulders, back)"
+add = gets.chomp.downcase
+case add 
+when 'arms'
+	puts "Type a name for the workout"
+	arms_name = gets.chomp
+	puts "Type the description for the workout"
+	arms_desc = gets.chomp
+	add_arms(db, arms_name, arms_desc)
+end
+end
+
+puts "What muscle group are you working out today? (arms, legs, chest, back, shoulders)?"
+workout = gets.chomp.downcase
+
+
+case workout
+# Generating a case statement deciding on what muscle group the user wants to workout
+# Added a random pick from the exisiting table
 when 'arms'
 	arms = db.execute("SELECT arms.name, arms.description FROM arms")
 	randnum = rand(0..arms.length - 1)
 	randompick = arms[randnum]
-	p arms[0]
-	p arms[1]
 	puts "Here is your random workout"
 	puts "----------------------"
 	puts "Workout Name: #{randompick['name']}"
@@ -173,7 +184,6 @@ when 'shoulders'
 else
 	puts "I didn't understand you sorry please retry the program."
 end
-
 
 
 
