@@ -98,34 +98,9 @@ def update_name(db, new_name, old_name, group)
 	db.execute("UPDATE #{group} SET name = (?) WHERE name = (?)", [new_name], [old_name])
 end
 
-# Method to view a table
-def print_table(db, name)
-	results = db.execute("SELECT * FROM #{name}")
-	results.each do |workout|
-		puts "Workout Name: #{workout['name']}:"
-		puts  "Workout Description: #{workout['description']}"
-	end
-end
-
-# USER INTERFACE
-
-# User chooses to add or delete workouts from the tables OR chooses to generate a workout
-# User  chooses a category to receive a workout
-# User receives a random workout printed to them
-# User chooses if they want a new workout generated or quit the program
-
- puts "What would you like to do?"
- puts "-- Type 'add' to add a workout."
- puts "-- Type 'delete' to delete a workout"
- puts "-- Type 'update' to update a workout."
- puts "-- Type 'workout' to generate a random workout."
- puts "-- Type 'print' to view a table."
- first_response = gets.chomp.downcase 
-
- #Set up a case statement for each response from the user
-case first_response
-   when 'add'
-		puts "choose a group to add a workout (arms, legs, chest, shoulders, back)"
+#Refactor User interface into seperate Methods
+def adder(db)
+	puts "choose a group to add a workout (arms, legs, chest, shoulders, back)"
 		add = gets.chomp.downcase
 	if add == 'arms' || add == 'legs' || add == 'chest' || add == 'back' || add == 'shoulders'
 		puts "Type a name for the workout"
@@ -137,19 +112,23 @@ case first_response
 	else 
 		puts "I didn't understand you."
 	end
-  when 'delete'
-		puts "choose a database to delete from (arms, legs, chest, shoulders, back)"
+end
+
+def deleter(db)
+	puts "choose a database to delete from (arms, legs, chest, shoulders, back)"
 		delete = gets.chomp.downcase
 	if delete == 'arms' || delete == 'legs' || delete == 'chest' || delete == 'back' || delete == 'shoulders'
 		puts "Type the name of the workout to remove"
 		name = gets.chomp
 		delete(db, name, delete)
-		puts "deleted: #{delete} (if it existed)"
+		puts "deleted: #{name} (if it existed)"
 	else
 		puts "I didn't understand you."
 	end
-  when 'update'
-  	puts "choose a database to update from. (arms, legs, chest, shoulders, back)"
+end
+
+def updater(db)
+	puts "choose a database to update from. (arms, legs, chest, shoulders, back)"
   	update = gets.chomp.downcase
   	if update == 'arms' || update == 'legs' || update == 'chest' || update == 'back' || update == 'shoulders'
   		puts "Type 'name' to update a workout name or type 'description' to update a workout description."
@@ -172,8 +151,25 @@ case first_response
   		 end
   	else puts "I didn't understand you."
   	end
-	when 'workout'	
-#Ask user what workout to fetch from and converts it to an array
+end
+
+#Print_Method
+def printer(db)
+	puts "What table would you like to view? (arms, legs, chest, back, shoulders)?"
+ 		view = gets.chomp.downcase
+ 		if view == 'arms' || view == 'legs' || view == 'chest' || view == 'back' || view == 'shoulders'
+ 			results = db.execute("SELECT * FROM #{view}")
+			results.each do |workout|
+			puts "Workout Name: #{workout['name']}:"
+			puts  "Workout Description: #{workout['description']}"
+	    end
+ 		else
+ 			puts "not a valid table."
+ 		end
+end
+
+def workout(db)
+	#Ask user what workout to fetch from and converts it to an array
 	puts "What muscle group are you working out today? (arms, legs, chest, back, shoulders)?"
 	workout = gets.chomp.downcase
 #Iterate through the array and generate a random workout based on the input
@@ -191,14 +187,37 @@ case first_response
 	    else
 	    puts "I didn't understand you. Please retry the program."
  	    end
- 	when 'print'
- 		puts "What table would you like to view? (arms, legs, chest, back, shoulders)?"
- 		view = gets.chomp.downcase
- 		if view == 'arms' || view == 'legs' || view == 'chest' || view == 'back' || view == 'shoulders'
- 			print_table(db, view)
- 		else
- 			puts "not a valid table."
- 		end
+end
+
+# USER INTERFACE
+
+# User chooses to add or delete workouts from the tables OR chooses to generate a workout
+# User  chooses a category to receive a workout
+# User receives a random workout printed to them
+# User chooses if they want a new workout generated or quit the program
+
+
+ puts "What would you like to do?"
+ puts "-- Type 'add' to add a workout."
+ puts "-- Type 'delete' to delete a workout"
+ puts "-- Type 'update' to update a workout."
+ puts "-- Type 'workout' to generate a random workout."
+ puts "-- Type 'print' to view a table."
+ first_response = gets.chomp.downcase 
+
+ #Set up a case statement for each response from the user
+ #Refactored into methods
+case first_response
+  when 'add'
+		adder(db)
+  when 'delete'
+		deleter(db)
+  when 'update'
+  		updater(db)
+  when 'workout'	
+		workout(db)
+  when 'print'
+ 		printer(db)
 else
 puts "I didn't understand you. Please retry the program." 
 end
