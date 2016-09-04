@@ -98,7 +98,7 @@ def update_name(db, new_name, old_name, group)
 	db.execute("UPDATE #{group} SET name = (?) WHERE name = (?)", [new_name], [old_name])
 end
 
-#Refactor User interface into seperate Methods
+#Method to add a workout
 def adder(db)
 	puts "choose a group to add a workout (arms, legs, chest, shoulders, back)"
 		add = gets.chomp.downcase
@@ -114,6 +114,7 @@ def adder(db)
 	end
 end
 
+#method to delete data from tables
 def deleter(db)
 	puts "choose a database to delete from (arms, legs, chest, shoulders, back)"
 		delete = gets.chomp.downcase
@@ -127,6 +128,7 @@ def deleter(db)
 	end
 end
 
+#Method to update the tables
 def updater(db)
 	puts "choose a database to update from. (arms, legs, chest, shoulders, back)"
   	update = gets.chomp.downcase
@@ -168,6 +170,7 @@ def printer(db)
  		end
 end
 
+#Method to generate a random workout
 def workout(db)
 	#Ask user what workout to fetch from and converts it to an array
 	puts "What muscle group are you working out today? (arms, legs, chest, back, shoulders)?"
