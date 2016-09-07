@@ -17,6 +17,7 @@ mainbody.style.backgroundColor = "grey";
 var button = document.getElementsByTagName("button");
 tiny = button[0];
 giant = button[1];
+move = button[2];
 
 function maketiny(event) {
   var photo = document.getElementById("lizard-photo");
@@ -36,3 +37,24 @@ function makebig(event) {
 
 tiny.addEventListener("click", maketiny);
 giant.addEventListener("click", makebig);
+
+
+// Make the lizard move
+
+function myMove() {
+  console.log("click happened! here's the click event:");
+  var elem = document.getElementById("lizard-photo");
+  var pos = 0;
+  var id = setInterval(frame, 5);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++;
+      elem.style.top = pos + 'px';
+      elem.style.left = pos + 'px';
+    }
+  }
+}
+
+move.addEventListener("click", myMove);
