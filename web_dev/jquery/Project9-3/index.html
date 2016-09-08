@@ -1,0 +1,45 @@
+<!-- Used Jquery to make my fish animate to the right -->
+<!-- Added script to make button make the fish hidden -->
+<!-- Added script to make fish fadeout on click -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About My Pet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div>
+    <img id="fish" src="fishy.jpg">
+    </div>
+    <p>Why <em>my</em> Fish is <strong>great</strong>:</p>
+    <ul>
+      <li>goes with any decor</li>
+      <li>comically <a href="http://grumpy.com">grumpy</a> looking</li>
+    </ul>
+    <button>Make the fish dissapear</button>
+    <p> Click on the fish to make him fade out!
+  <script src="jquery-3.1.0.js"></script>
+  <script>
+
+$(document).ready(function(){
+    $("#fish").animate({left: '500px'});
+});
+
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#fish").hide();
+    });
+});
+
+$(document).ready(function(){
+    $("#fish").click(function(){
+        $("#fish").fadeOut(3000);
+    });
+});
+
+
+</script>
+</body>
+</html>
