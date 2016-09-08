@@ -87,6 +87,15 @@ end
 #query parameter is present.
 
 get '/students/age/:age' do 
+  response = ''
   age = db.execute("SELECT * FROM students WHERE age=(?)", [params[:age]])
+  age.to_s
+   age.each do |student|
+    response << "ID: #{student['id']}<br>"
+    response << "Name: #{student['name']}<br>"
+    response << "Age: #{student['age']}<br>"
+    response << "Campus: #{student['campus']}<br><br>"
+  end
+  response
 end
 
