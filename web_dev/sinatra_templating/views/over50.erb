@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>students over 50</title>
+</head>
+<body>
+<p> Here is all the students over age 50. </p>
+<% @students.each do |student| %>
+    <% if student['age'] >= 50 %>
+     <%= student['name'] %><br>
+   <% end %>
+ <% end%>
+</body>
+</html>
